@@ -1,5 +1,5 @@
 [package]
-name = "runtime"
+name = "hoppinworldruntime"
 version = "0.1.0"
 authors = ["Joël Lupien (Jojolepro) <jojolepromain@gmail.com>"]
 edition = "2018"
