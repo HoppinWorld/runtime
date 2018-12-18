@@ -19,7 +19,6 @@ tokio = "0.1.7"
 tokio-executor = "0.1.0"
 
 amethyst-extra = { git = "https://github.com/jojolepro/amethyst-extra" }
-amethyst-rhusics = { git = "https://github.com/amethyst/amethyst-rhusics" }
 
 serde = { version = "1", features = ["serde_derive"] }
 log = "0.4"
@@ -32,6 +31,7 @@ uuid = { version = "0.7.1", features = ["v4", "serde"] }
 ron = "0.4"
 
 hoppinworlddata = { git = "https://github.com/hoppinworld/data" }
+half_matrix = "0.2"
 
 serde_json = "1.0.32"
 

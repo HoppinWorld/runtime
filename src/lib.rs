@@ -1,7 +1,6 @@
 #[macro_use]
 extern crate amethyst;
 extern crate amethyst_extra;
-extern crate amethyst_rhusics;
 #[macro_use]
 extern crate serde;
 #[macro_use]

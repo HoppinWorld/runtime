@@ -1,18 +1,18 @@
 use amethyst::ecs::{Component, DenseVecStorage};
-use amethyst_rhusics::rhusics_core::Collider;
+use half_matrix::HalfMatrix;
 
-#[repr(u8)]
+#[repr(u32)]
 #[derive(Debug, Clone, PartialOrd, PartialEq, Component, Serialize, Deserialize)]
 pub enum ObjectType {
-    Scene,
-    StartZone,
-    EndZone,
-    KillZone,
-    Player,
-    PlayerFeet,
-    Dynamic,
-    Ignore,
-    SegmentZone(u8),
+    Scene, // 0
+    StartZone, // 1
+    EndZone, // 2
+    KillZone, // 3
+    Player, // 4
+    PlayerFeet, // 5
+    Dynamic, // 6
+    Ignore, // 7
+    SegmentZone(u8), // 8
 }
 
 impl Default for ObjectType {
@@ -21,36 +21,15 @@ impl Default for ObjectType {
     }
 }
 
-fn contact_dual(s: &ObjectType, o: &ObjectType, w1: &ObjectType, w2: &ObjectType) -> bool {
-    // Special match to ignore the segment zone id
-    if let &ObjectType::SegmentZone(_) = s {
-        return match (w1, w2) {
-            (&ObjectType::SegmentZone(_), other) => o == other,
-            (other, &ObjectType::SegmentZone(_)) => o == other,
-            _ => false
-        };
-    }
-
-    if let &ObjectType::SegmentZone(_) = o {
-        return match (w1, w2) {
-            (&ObjectType::SegmentZone(_), other) => s == other,
-            (other, &ObjectType::SegmentZone(_)) => s == other,
-            _ => false
-        };
-    }
-
-    (s == w1 && o == w2) || (s == w2 && o == w1)
-}
-
-impl Collider for ObjectType {
-    fn should_generate_contacts(&self, other: &ObjectType) -> bool {
-        contact_dual(self, other, &ObjectType::Player, &ObjectType::Scene) ||
-        contact_dual(self, other, &ObjectType::PlayerFeet, &ObjectType::Scene) ||
-        contact_dual(self, other, &ObjectType::Player, &ObjectType::KillZone) ||
-        contact_dual(self, other, &ObjectType::Player, &ObjectType::StartZone) ||
-        contact_dual(self, other, &ObjectType::Player, &ObjectType::EndZone) ||
-        contact_dual(self, other, &ObjectType::Player, &ObjectType::Dynamic) ||
-        contact_dual(self, other, &ObjectType::Player, &ObjectType::SegmentZone(69))
-        //*self == ObjectType::Player || *other == ObjectType::Player || *self == ObjectType::Dynamic || *other == ObjectType::Dynamic
-    }
+pub fn generate_collision_matrix() -> HalfMatrix {
+    let mut m = HalfMatrix::new(9);
+    m.enable(4,0);
+    m.enable(4,1);
+    m.enable(4,2);
+    m.enable(4,3);
+    m.enable(4,6);
+    m.enable(4,8);
+    m.enable(5,0);
+    m.enable(5,6);
+    m
 }
