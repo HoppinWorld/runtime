@@ -1,8 +1,7 @@
 use amethyst::ecs::{Component, DenseVecStorage};
 use half_matrix::HalfMatrix;
 
-#[repr(u32)]
-#[derive(Debug, Clone, PartialOrd, PartialEq, Component, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, PartialOrd, PartialEq, Component, Serialize, Deserialize)]
 pub enum ObjectType {
     Scene, // 0
     StartZone, // 1
@@ -18,6 +17,22 @@ pub enum ObjectType {
 impl Default for ObjectType {
     fn default() -> Self {
         ObjectType::Scene
+    }
+}
+
+impl From<ObjectType> for u32 {
+    fn from(o: ObjectType) -> u32 {
+        match o {
+            ObjectType::Scene => 0,
+            ObjectType::StartZone => 1,
+            ObjectType::EndZone => 2,
+            ObjectType::KillZone => 3,
+            ObjectType::Player => 4,
+            ObjectType::PlayerFeet => 5,
+            ObjectType::Dynamic => 6,
+            ObjectType::Ignore => 7,
+            ObjectType::SegmentZone(_) => 8,
+        }
     }
 }
 
