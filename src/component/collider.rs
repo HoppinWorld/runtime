@@ -38,13 +38,13 @@ impl From<ObjectType> for u32 {
 
 pub fn generate_collision_matrix() -> HalfMatrix {
     let mut m = HalfMatrix::new(9);
-    m.enable(4,0);
+    m.enable(4,0); // Player Scene
     m.enable(4,1);
     m.enable(4,2);
     m.enable(4,3);
     m.enable(4,6);
     m.enable(4,8);
-    m.enable(5,0);
+    m.enable(5,0); // PlayerFeet Scene
     m.enable(5,6);
     m
 }
