@@ -17,12 +17,8 @@ impl<'a> System<'a> for PlayerFeetSync {
 
     fn run(&mut self, (player_feets, players, mut transforms, mut rigid_bodies): Self::SystemData) {
         // Player in scene
-        if let Some(Some((player_position, vel))) = (&players, &transforms, &rigid_bodies).join().next().map(|e| {
-                if let DynamicBody::RigidBody(ref rb) = e.2 {
-                    Some((e.1.translation().clone(), rb.velocity.clone()))
-                } else {
-                    None
-                }
+        if let Some((player_position, vel)) = (&players, &transforms, &rigid_bodies).join().next().map(|e| {
+                (e.1.translation().clone(), e.2.velocity.clone())
             }) {
             // TODO: Replace -0.4 by player half_height
             *(&player_feets, &mut transforms).join().next().expect("No player feet but player is in scene.").1.translation_mut() = Vector3::new(player_position.x, player_position.y - 0.4, player_position.z);
