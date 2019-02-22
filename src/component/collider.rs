@@ -1,5 +1,10 @@
 use amethyst::ecs::{Component, DenseVecStorage};
 use half_matrix::HalfMatrix;
+use amethyst_extra::nphysics_ecs::ncollide::world::CollisionGroups;
+
+lazy_static! {
+    static ref COLLISION_MATRIX: HalfMatrix = generate_collision_matrix();
+}
 
 #[derive(Debug, Copy, Clone, PartialOrd, PartialEq, Component, Serialize, Deserialize)]
 pub enum ObjectType {
@@ -36,6 +41,12 @@ impl From<ObjectType> for u32 {
     }
 }
 
+impl From<ObjectType> for CollisionGroups {
+    fn from(o: ObjectType) -> CollisionGroups {
+        CollisionGroups::new().with_membership(&[u32::from(o) as usize]).with_whitelist(whitelist_for_object(o).as_slice())
+   }
+}
+
 pub fn generate_collision_matrix() -> HalfMatrix {
     let mut m = HalfMatrix::new(9);
     m.enable(4,0); // Player Scene
@@ -47,4 +58,17 @@ pub fn generate_collision_matrix() -> HalfMatrix {
     m.enable(5,0); // PlayerFeet Scene
     m.enable(5,6);
     m
+}
+
+pub fn whitelist_for_object(o: ObjectType) -> Vec<usize> {
+    let mut res = vec![];
+    let id = u32::from(o);
+    for i in 0..COLLISION_MATRIX.size() {
+        if i != id {
+            if COLLISION_MATRIX.contains(i, id) {
+                res.push(i as usize);
+            }
+        }
+    }
+    res
 }

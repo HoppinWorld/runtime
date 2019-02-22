@@ -13,6 +13,8 @@ extern crate partial_function;
 #[macro_use]
 extern crate specs_derive;
 extern crate hoppinworlddata;
+#[macro_use]
+extern crate lazy_static;
 
 pub mod component;
 pub mod resource;
