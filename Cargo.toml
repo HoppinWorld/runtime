@@ -7,9 +7,9 @@ edition = "2018"
 [dependencies]
 
 
-amethyst = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
-amethyst_gltf = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
-amethyst_core = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
+amethyst = { git = "https://github.com/jojolepro/amethyst", branch = "master" }
+#amethyst_gltf = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
+#amethyst_core = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
 
 
 hyper = "0.12.11"
@@ -35,14 +35,14 @@ half_matrix = "0.2"
 
 serde_json = "1.0.32"
 
-[patch.crates-io]
-amethyst = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
-amethyst_core = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
-amethyst_assets = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
-amethyst_renderer = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
-
-[patch.'https://github.com/amethyst/amethyst']
-amethyst = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
-amethyst_core = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
-amethyst_assets = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
-amethyst_renderer = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
+#[patch.crates-io]
+#amethyst = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
+#amethyst_core = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
+#amethyst_assets = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
+#amethyst_renderer = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
+#
+#[patch.'https://github.com/amethyst/amethyst']
+#amethyst = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
+#amethyst_core = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
+#amethyst_assets = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
+#amethyst_renderer = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
