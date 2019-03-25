@@ -7,7 +7,7 @@ edition = "2018"
 [dependencies]
 
 
-amethyst = { git = "https://github.com/jojolepro/amethyst", branch = "master" }
+amethyst = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
 #amethyst_gltf = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
 #amethyst_core = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
 
