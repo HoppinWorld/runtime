@@ -2,7 +2,7 @@
 use amethyst::ecs::{System, ReadStorage, WriteStorage, Join};
 use crate::component::{PlayerFeetTag, PlayerTag};
 use amethyst::core::Transform;
-use amethyst::core::nalgebra::Vector3;
+use amethyst::core::math::Vector3;
 use amethyst_extra::nphysics_ecs::*;
 
 pub struct PlayerFeetSync;
