@@ -1,10 +1,10 @@
 use amethyst::utils::scene::BasicScenePrefab;
-use amethyst::renderer::PosNormTangTex;
 use crate::util::AllEvents;
 use amethyst::prelude::*;
+use amethyst::renderer::rendy::mesh::*;
 use crate::component::ObjectType;
 
-pub type ScenePrefab = BasicScenePrefab<Vec<PosNormTangTex>>;
+pub type ScenePrefab = BasicScenePrefab<(Vec<Position>, Vec<Normal>, Vec<TexCoord>, Vec<Tangent>)>;
 /*pub type Shape = CollisionShape<Primitive3<f32>, BodyPose3<f32>, Aabb3<f32>, ObjectType>;
 pub type DefaultPhysicalEntityParts<'a, T> = PhysicalEntityParts<
     'a,

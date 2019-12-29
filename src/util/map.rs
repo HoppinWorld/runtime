@@ -1,4 +1,4 @@
-use hoppinworlddata::MapInfo;
+use hoppinworld_data::MapInfo;
 use amethyst::ecs::Entity;
 
 

@@ -1,12 +1,12 @@
-use amethyst::ecs::{Component, DenseVecStorage};
+use amethyst::ecs::*;
 use half_matrix::HalfMatrix;
-use amethyst_extra::nphysics_ecs::ncollide::world::CollisionGroups;
+use amethyst_extra::nphysics_ecs::ncollide::pipeline::object::CollisionGroups;
 
 lazy_static! {
     static ref COLLISION_MATRIX: HalfMatrix = generate_collision_matrix();
 }
 
-#[derive(Debug, Copy, Clone, PartialOrd, PartialEq, Component, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, PartialOrd, PartialEq, Serialize, Deserialize)]
 pub enum ObjectType {
     Scene, // 0
     StartZone, // 1
@@ -17,6 +17,10 @@ pub enum ObjectType {
     Dynamic, // 6
     Ignore, // 7
     SegmentZone(u8), // 8
+}
+
+impl Component for ObjectType {
+    type Storage = DenseVecStorage<Self>;
 }
 
 impl Default for ObjectType {

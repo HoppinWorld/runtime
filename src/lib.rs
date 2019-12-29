@@ -10,9 +10,7 @@ extern crate log;
 #[macro_use]
 extern crate derive_new;
 extern crate partial_function;
-#[macro_use]
-extern crate specs_derive;
-extern crate hoppinworlddata;
+extern crate hoppinworld_data;
 #[macro_use]
 extern crate lazy_static;
 

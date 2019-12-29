@@ -1,7 +1,15 @@
-use amethyst::ecs::{Component, DenseVecStorage};
+use amethyst::ecs::*;
 
-#[derive(Component)]
 pub struct PlayerFeetTag;
 
-#[derive(Default, Component, Serialize, Deserialize)]
+impl Component for PlayerFeetTag {
+    type Storage = DenseVecStorage<Self>;
+}
+
+#[derive(Default, Serialize, Deserialize)]
 pub struct PlayerTag;
+
+impl Component for PlayerTag {
+    type Storage = DenseVecStorage<Self>;
+}
+

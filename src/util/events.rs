@@ -1,8 +1,8 @@
 use amethyst::core::shrev::{ReaderId, EventChannel};
-use amethyst::renderer::Event;
+use amethyst::winit::Event;
 use amethyst::core::EventReader;
 use amethyst::ui::UiEvent;
-use amethyst::core::ecs::{SystemData, Resources, Read};
+use amethyst::core::ecs::*;
 
 #[derive(Clone, EventReader)]
 #[reader(AllEventsReader)]
