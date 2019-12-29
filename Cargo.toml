@@ -5,7 +5,7 @@ authors = ["Joël Lupien (Jojolepro) <jojolepromain@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-amethyst = { path = "../amethyst" }
+amethyst = { git = "https://github.com/jojolepro/amethyst", branch = "hoppinworld" }
 amethyst-extra = { path = "../amethyst-extra" }
 hoppinworld_data = { path = "../data" }
 hyper = "0.12.11"
